@@ -1,0 +1,45 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Dashboard</h1>
+  <mat-grid-list cols="{{ ( cardLayout | async )?.columns }}" rowHeight="300px">
+    <!--Mini Cards-->
+    <mat-grid-tile *ngFor="let mc of miniCardData" [colspan]="( cardLayout | async )?.miniCard.cols"
+      [rowspan]="( cardLayout | async )?.miniCard.rows">
+      <app-mini-card [icon]="mc.icon" [title]="mc.title" [value]="mc.value" [color]="mc.color"
+        [isIncrease]="mc.isIncrease" duration="since last month" [tppercentValue]="mc.tppercentValue"
+        [percentValue]="mc.percentValue" [isCurrency]="mc.isCurrency" [bpcolor]="mc.bpcolor" [tpcolor]="mc.tpcolor" (changeDisplay)="onDisplayChange($event)">
+      </app-mini-card>
+    </mat-grid-tile>
+    <!--Charts-->
+    <!--     <mat-grid-tile [colspan]="( cardLayout | async )?.chart.cols" [rowspan]="( cardLayout | async )?.chart.rows">
+      <app-card title="Monthly Revenue">
+        <app-annual-sale-chart></app-annual-sale-chart>
+      </app-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="( cardLayout | async )?.chart.cols" [rowspan]="( cardLayout | async )?.chart.rows">
+      <app-card title="Product Sales">
+        <app-product-sales-chart></app-product-sales-chart>
+      </app-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="( cardLayout | async )?.chart.cols" [rowspan]="( cardLayout | async )?.chart.rows">
+      <app-card title="Sales by Traffic Source">
+        <app-sales-traffic-chart></app-sales-traffic-chart>
+      </app-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="( cardLayout | async )?.chart.cols" [rowspan]="( cardLayout | async )?.chart.rows">
+      <app-card title="Online Store Sessions by Traffic Source">
+        <app-store-sessions-chart></app-store-sessions-chart>
+      </app-card>
+    </mat-grid-tile> -->
+    <!--Table-->
+    <mat-grid-tile  *ngIf="aus" [colspan]="( cardLayout | async )?.table.cols" [rowspan]="( cardLayout | async )?.table.rows">
+      <app-card title="AU Domestic">
+        <app-orders-table></app-orders-table>
+      </app-card>
+    </mat-grid-tile>
+    <mat-grid-tile *ngIf="aus" [colspan]="( cardLayout | async )?.table.cols" [rowspan]="( cardLayout | async )?.table.rows">
+      <app-card title="AU International">
+        <app-int></app-int>
+      </app-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
