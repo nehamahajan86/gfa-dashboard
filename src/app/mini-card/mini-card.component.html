@@ -1,0 +1,21 @@
+<mat-card class="dashboard-card" (click)="displayTile()">
+    <mat-card-header class="card-header">
+        <mat-card-title>
+            <h1 class="value-text" *ngIf="isCurrency">{{value | currency :'$' : 'symbol' : '0.0' }}</h1>
+            <h1 class="value-text" *ngIf="!isCurrency">{{value}}</h1>
+        </mat-card-title>
+        <div mat-card-avatar class="card-icon">
+            <mat-icon [color]="color" class="avatar-icon">{{icon}}</mat-icon>
+        </div>
+    </mat-card-header>
+   
+    <p>Basket Processing<ngb-progressbar [showValue]="true" [type]="bpcolor" [value]="percentValue*100"></ngb-progressbar></p>
+    <p>Trade Processing<ngb-progressbar [showValue]="true" [type]="tpcolor" [value]="tppercentValue*100"></ngb-progressbar></p>
+    <p class="difference-text">
+        <span
+            [ngClass]="{ 'green-text': isIncrease, 'red-text': !isIncrease }">{{ (percentValue *100 + tppercentValue*100)/2 }}%
+           
+        </span>
+        
+    </p>
+</mat-card>

@@ -1,0 +1,63 @@
+<div class="mat-elevation-z8">
+  <table mat-table class="full-width-table" matSort aria-label="Elements">
+ <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Fund Code</th>
+      <td mat-cell *matCellDef="let row">{{row.id}}</td>
+    </ng-container>
+
+     <!-- Date Column -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Basket Date</th>
+      <td mat-cell *matCellDef="let row">{{row.date}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Basket ID</th>
+      <td mat-cell *matCellDef="let row">{{row.name}}</td>
+    </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>NAV EXTRA</th>
+          <td mat-cell style="background-color: lightgreen" *matCellDef="let row">{{row.status}}</td>
+        </ng-container>
+        
+
+       <!-- Name Column -->
+        <ng-container matColumnDef="orderTotal">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>NAV EIP</th>
+          <td mat-cell style="background-color: lightgreen" *matCellDef="let row">{{row.orderTotal}}</td>
+        </ng-container>
+
+
+       <!-- Name Column -->
+       <ng-container matColumnDef="srmStatus">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Security Prices</th>
+        <td mat-cell style="background-color: yellow" *matCellDef="let row">{{row.srmStatus}}</td>
+      </ng-container>
+
+           <!-- Name Column -->
+           <ng-container matColumnDef="srmStatus1">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>FX Rate</th>
+            <td mat-cell [ngStyle]= "row.srmStatus1=='Missing'?{'background-color': 'red'}:{'background-color': 'lightgreen'}" *matCellDef="let row">{{row.srmStatus1}}</td>
+          </ng-container>
+
+     <!-- Peyment Column -->
+     <ng-container matColumnDef="paymentMode">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Fund Group</th>
+      <td mat-cell *matCellDef="let row">{{row.paymentMode}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator
+      [length]="dataSource?.data.length"
+      [pageIndex]="0"
+      [pageSize]="25"
+      [pageSizeOptions]="[10, 20, 100, 250]">
+  </mat-paginator>
+</div>
